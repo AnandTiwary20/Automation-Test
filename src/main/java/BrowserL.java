@@ -7,6 +7,12 @@ public class BrowserL {
 
     public static void main(String[] args) {
 
+        BrowserL browserL = new BrowserL();
+        browserL.executeTest();
+    }
+
+    public void executeTest() {
+
         Playwright playwright = Playwright.create();
 
         Browser browser = playwright.chromium().launch(
@@ -31,7 +37,7 @@ public class BrowserL {
                 AriaRole.LINK,
                 new Page.GetByRoleOptions().setName("Mobile Covers")
         ).click();
-//      page.pause();
+
         page.getByRole(
                 AriaRole.TEXTBOX,
                 new Page.GetByRoleOptions().setName("Search your phone model…")
@@ -55,14 +61,13 @@ public class BrowserL {
 
         page.locator("cart-drawer").waitFor();
 
-
         Locator cartItems = page.locator("tr.cart-item");
+
         if (cartItems.count() == 3) {
             System.out.println("PASS : All 3 products added successfully.");
         } else {
             System.out.println("FAIL : Expected 3 products but found " + cartItems.count());
         }
-
 
         for (int i = 0; i < cartItems.count(); i++) {
 
@@ -78,10 +83,10 @@ public class BrowserL {
                     .locator(".cart-item__price-wrapper .price")
                     .innerText();
 
-            String link = "https://casekaro.com" +
-                    cartItems.nth(i)
-                            .locator(".cart-item__name")
-                            .getAttribute("href");
+            String link = "https://casekaro.com"
+                    + cartItems.nth(i)
+                    .locator(".cart-item__name")
+                    .getAttribute("href");
 
             System.out.println("----------------------");
             System.out.println("Product : " + name);
@@ -90,11 +95,10 @@ public class BrowserL {
             System.out.println("Link : " + link);
         }
 
+//        page.pause();
 
-
-        page.pause();
-//        browser.close();
-//        playwright.close();
+        browser.close();
+        playwright.close();
     }
 
     public static void addMaterial(Page page, String materialText) {
