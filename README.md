@@ -101,3 +101,23 @@ or execute the `TestRunner` class directly from IntelliJ IDEA.
 - All three material variants are successfully added to the cart.
 - Cart contains exactly 3 products.
 - Product details are printed in the console.
+#### `BrowserL.java`
+Contains the complete Playwright automation script. It launches the browser, searches for the required product, adds Hard, Soft and Glass variants to the cart, opens the cart, verifies that three products are present, and prints each product's details.
+
+#### `CaseKaroSteps.java`
+Contains the Cucumber Step Definitions. It connects the feature file with the Playwright automation by invoking the automation methods.
+
+#### `casekaro.feature`
+Contains the test scenario written in Gherkin syntax (Given–When–Then), describing the expected user flow.
+
+#### `TestRunner.java`
+Acts as the Cucumber test runner. It executes the feature files and links them with the corresponding step definitions.
+
+#### `pom.xml`
+Maven configuration file used to manage project dependencies such as Playwright, Cucumber, and JUnit, and to build the project.
+
+#### `.gitignore`
+Specifies files and folders (such as `target/`) that should not be committed to the Git repository.
+
+#### `README.md`
+Provides project overview, setup instructions, execution steps, project structure, and additional notes
